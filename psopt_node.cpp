@@ -22,9 +22,9 @@ adouble integrand_cost(adouble* states, adouble* controls, adouble* parameters,
     adouble e_theta = h + a * sin(2 * states[CINDEX(4)]) - states[CINDEX(1)];
     adouble e_phi   = 4 * a * cos(states[CINDEX(4)]) - states[CINDEX(2)];
 
-    adouble ctl_cost = 1e3 * (controls[ CINDEX(1) ] * controls[ CINDEX(1) ]) + 0.1 * ((controls[ CINDEX(2) ] * controls[ CINDEX(2) ]));
+    adouble ctl_cost = 1e-3 * (controls[ CINDEX(1) ] * controls[ CINDEX(1) ]) + 0.1 * ((controls[ CINDEX(2) ] * controls[ CINDEX(2) ]));
     adouble state_cost = 5 * 1e2 * ((e_theta * e_theta) + (e_phi * e_phi));
-    adouble virt_cost = (states[CINDEX(5)] - 0.05) * (states[CINDEX(5)] - 0.05);
+    adouble virt_cost = (states[CINDEX(5)] - 1.0) * (states[CINDEX(5)] - 1.0);
 
     return state_cost + ctl_cost + virt_cost;
 }
