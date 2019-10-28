@@ -25,9 +25,9 @@ int main(void)
     IntermediateState e_phi   = 4 * a * cos(th) - phi;
     IntermediateState final_cost =  5 * 1e2 * ((e_theta * e_theta) + (e_phi * e_phi));
 
-    IntermediateState ctl_cost = 1e3 * (u_gamma * u_gamma) + 0.1 * (v * v);
+    IntermediateState ctl_cost = 1e-3 * (u_gamma * u_gamma) + 0.1 * (v * v);
     IntermediateState state_cost = 5 * 1e2 * ((e_theta * e_theta) + (e_phi * e_phi));
-    IntermediateState virt_cost = (dth - 0.05) * (dth - 0.05);
+    IntermediateState virt_cost = (dth - 1.0) * (dth - 1.0);
     IntermediateState integ_cost = state_cost + ctl_cost + virt_cost;
 
     DifferentialEquation f;
